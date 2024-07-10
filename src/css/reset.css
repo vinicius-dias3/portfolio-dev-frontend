@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* INSERIR MARGIN E PADDING 0 */
+    list-style-type: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* color: inherit; */
+    /* margin: 0; */
+}
+
+a{color: inherit;}
+a:visited{
+    color: inherit;
+}
+
+button{
+    cursor: pointer;
+}

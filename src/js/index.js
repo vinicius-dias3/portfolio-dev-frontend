@@ -1,32 +1,70 @@
-// const hardSkills = document.querySelector('.hard-skills')
+const btnMenu = document.querySelector('#hamburguer-button')
+const menu = document.querySelector('#menu')
 
-// hardSkills.addEventListener('wheel', (e)=> {
-//     // console.log(e.deltaY)
+function closeMenu(){
+    btnMenu.setAttribute('aria-expanded', 'false')
+    menu.setAttribute('aria-hidden', 'true')
+    menu.classList.add('menu-closed')
+    menu.classList.remove('menu')
+}
 
-//     e.preventDefault();
-//     const maxScrollLeft = 1626;
-//     const newScrollLeft = hardSkills.scrollLeft + e.deltaY;
+closeMenu()
 
-//     // Limitar a rolagem horizontal a 1526 pixels
-//     if (newScrollLeft > maxScrollLeft) {
-//         hardSkills.scrollLeft = maxScrollLeft;
-//     } else if (newScrollLeft < 0) {
-//         hardSkills.scrollLeft = 0;
-//     } else {
-//         hardSkills.scrollLeft = newScrollLeft;
-//     }
-
+btnMenu.addEventListener('click', function() {
+    let expanded = this.getAttribute('aria-expanded') === 'true' ? true : false;
+    document.removeEventListener('click', closeMenu)
+    if(expanded){
+        menu.classList.add('menu-closed')
+        menu.classList.remove('menu')
+    }else{
+        menu.classList.remove('menu-closed')
+        menu.classList.add('menu')
+    }
+    this.setAttribute('aria-expanded', !expanded)
+    menu.setAttribute('aria-hidden', expanded)
     
+    setTimeout(function(){
+        if(!expanded){
+            document.addEventListener('click', closeMenu)
+            console.log('teste')
+        }
+    }, 1)
+})
 
-// })
+const mediaQuery = window.matchMedia('(max-width: 796px)')
 
-VanillaTilt.init(document.querySelectorAll(".technologies .title"), {
-    max: 25,
-    speed: 400,
-    scale: 1.1,
-    glare: true,
-    "max-glare": 0.5
-});
+function handleMediaQueryChange(e){
+    if(e.matches){
+        closeMenu()
+    }else{
+        btnMenu.setAttribute('aria-expanded', 'true')
+        menu.setAttribute('aria-hidden', 'false')
+        menu.classList.remove('menu-closed')
+        menu.classList.add('menu')
+        
+        //animação card hard skills
+        VanillaTilt.init(document.querySelectorAll(".technologies .card"), {
+            max: 25,
+            speed: 400,
+            scale: 1.1,
+            glare: true,
+            "max-glare": 0.5
+        });
+    }
+}
+
+mediaQuery.addEventListener('change', handleMediaQueryChange)
+handleMediaQueryChange(mediaQuery)
+
+
+
+// VanillaTilt.init(document.querySelectorAll(".technologies .title"), {
+//     max: 25,
+//     speed: 400,
+//     scale: 1.1,
+//     glare: true,
+//     "max-glare": 0.5
+// });
 
 
 const slider = document.querySelector('.slider')
@@ -36,8 +74,6 @@ slider.addEventListener('mouseover', (event)=> {
     let itens = slider.querySelectorAll('.item')
     const {target} = event
     if(target.classList.contains('item')){
-        // console.log(target)
-        // console.log('pegou o target')
         itens.forEach(item => {
             if (item !== target) item.classList.remove('active')
         })
@@ -45,68 +81,31 @@ slider.addEventListener('mouseover', (event)=> {
     }
 })
 
+//mostrar setinha que ao clicar, vai pro topo
+const arrowUp = document.querySelector('#arrow-up')
 function showArrowUp(){
-    const arrowUp = document.querySelector('#arrow-up')
-    const scrollHeight = window.innerHeight*1.3
-    if(window.scrollY > scrollHeight){
+    if(window.scrollY > 500){
         arrowUp.classList.add('show')
     }else {
         arrowUp.classList.remove('show')
     }
 }
-// window.addEventListener('scroll', showArrowUp)
-window.addEventListener('scroll', ()=> {
-    showArrowUp()
-    // activeAnimation()
+window.addEventListener('scroll', showArrowUp)
+
+arrowUp.addEventListener('click', function(e){
+    e.preventDefault()
+    window.scrollTo({
+        top: 0
+    })
 })
 
-// console.log(window.innerHeight) 607
-// console.log(window.scrollY)  0
-
-let intervalId 
-function activeAnimation(){
-    // const scrollHeight = window.innerHeight
-    let skills = document.querySelectorAll('.skill')
-    if(window.scrollY > 440 && window.scrollY < 1250){
-        // console.log('teste')
-        // console.log(window.scrollY)
-        intervalId = setInterval(()=> {
-
-            skills.forEach(skill => {
-                skill.classList.add('animate__animated', 'animate__backInRight')
-            })
-        }, 1000)
-    } else{
-        // console.log(skills)
-        // clearInterval(intervalId)
-        skills.forEach(skill => {
-            skill.classList.remove('animate__animated', 'animate__backInRight')
-        })
-    }
-}
 const email = document.querySelector('.email')
 email.addEventListener('click', () => {
-    console.log('teste')
+    
+    const msgCopied = email.querySelector('.copied')
+    msgCopied.classList.remove('hidden')
     navigator.clipboard.writeText(email.textContent)
+    setTimeout(()=> {
+        msgCopied.classList.add('hidden')
+    },2000)
 })
-
-// console.log(arrowUp.getBoundingClientRect().top)
-// console.log(arrowUp.innerHeight)
-// window.addEventListener('scroll', ()=>{
-//     // console.log('pegou o evento')
-//     // console.log(arrowUp.getBoundingClientRect().top)
-//     // if(arrowUp.getBoundingClientRect().top < (window.innerHeight*3)){
-//     if(arrowUp.getBoundingClientRect().top < 1500){
-//         console.log(`altura da seta = ${arrowUp.getBoundingClientRect().top}`)
-//         console.log('deu certo')
-//         arrowUp.style.background= 'black'
-//     }
-// }) 
-
-/*
-if(arrowUp.getBoundingClientRect().top < (window.innerHeight*2)){
-    console.log('código correto')
-    // console.log(arrowUp.getBoundingClientRect().top)
-    // arrowUp.style.background='black'
-
-}*/ 

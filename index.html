@@ -10,7 +10,6 @@
     integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <link rel="shortcut icon" href="./src/images/icon-done.png" type="image/x-icon">
     <link rel="stylesheet" href="./src/css/reset.css">
     <!-- <link rel="stylesheet" href="./src/css/variaveis.css"> -->
@@ -24,19 +23,21 @@
     <div class="general-container">
         <div class="header" id="header">
             <nav class="nav">
-                <div class="btn-menu">
-                    <img src="./src/images/menu.svg" alt="menu icon">
-                    <img class="menu-close-icon" src="./src/images/menu-close-icon.svg" alt="menu close icon">
-                </div>
-                <ul class="menu">
+                <button 
+                id="hamburguer-button"
+                class="hamburguer-button" 
+                aria-label="Menu Principal" 
+                aria-controls="menu" 
+                aria-expanded="true">
+                    <span class="icon"></span>Menu
+                </button>
+                <ul id="menu" class="menu">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#jornada">Jornada</a></li>
                     <li><a href="#projects">Projetos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-
-            <!-- <img src="./src/images/banner.png" alt=""> -->
         </div>
 
 
@@ -56,7 +57,7 @@
             <i class="fas fa-arrow-down"></i>
         </section>
 
-        <section class="jornada appear">
+        <section class="jornada appear" id="jornada">
             <div class="habilidades" id="habilidades">
                 <div class="skills-img">
                     <!-- <img src="./src/images/skills.jpg" loading="lazy"> -->
@@ -69,31 +70,31 @@
 
             <section class="hard-skills appear">
                 <ul class="technologies">
-                    <li class="title html-icon">
+                    <li class="card html-icon">
                         <i class="fab fa-html5"></i>
                         <h3>HTML</h3>
                     </li>
-                    <li class="title css-icon">
+                    <li class="card css-icon">
                         <i class="fab fa-css3-alt"></i>
                         <h3>CSS</h3>
                     </li>
-                    <li class="title git-icon">
+                    <li class="card git-icon">
                         <i class="fab fa-git-alt"></i>
                         <h3>Git</h3>
                     </li>
-                    <li class="title github-icon">
+                    <li class="card github-icon">
                         <i class="fab fa-github"></i>
                         <h3>Github</h3>
                     </li>
-                    <li class="title js-icon">
+                    <li class="card js-icon">
                         <i class="fab fa-js-square"></i>
                         <h3>Javascript</h3>
                     </li>
-                    <li class="title react-icon">
+                    <li class="card react-icon">
                         <i class="fab fa-react"></i>
                         <h3>React</h3>
                     </li>
-                    <li class="title tailwind-icon">
+                    <li class="card tailwind-icon">
                         <img src="./src/images/tailwind-css-icon.png">
                         <h3>Tailwind CSS</h3>
                     </li>
@@ -172,7 +173,7 @@
 
                 <div class="email">
                     <span>vinicius.sod3@gmail.com</span>
-                    <div class="copied"></div>
+                    <div class="copied hidden"></div>
                 </div>
                 <div class="curriculo">
                     <span>Baixar currículo</span>
@@ -193,7 +194,6 @@
         <!-- <i class="far fa-arrow-alt-circle-up"></i> -->
         <i class="fas fa-arrow-up"></i>
         <!-- <i class="fas fa-chevron-circle-up"></i> -->
-    </a>
 
 
     <script src="./src/js/index.js"></script>

@@ -1,11 +1,11 @@
 @media (max-width: 1100px){
-    .header .nav .menu{
+    /* .header .nav .menu{
         display: none;
     }
 
     .header .nav .btn-menu{
         display: block;
-    }
+    } */
 
     /* .general-container .hero{
         display: block;
@@ -21,18 +21,82 @@
 }
 
 
-@media (max-width: 815px){
+/* @media (max-width: 815px){ */
+@media (max-width: 796px){
+    .header {
+        height: auto;
+        position: fixed;
+        z-index: 2;
+        width: calc(90% - 2px);
+        background-color: rgba(1, 24, 27, 0.7);
+    }
+    .header .nav{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header .nav .hamburguer-button {
+        display: block;
+        transition: opacity .6s linear;
+        opacity: 1;
+    }
+
+    .header .nav .hamburguer-button + .menu{
+        position: absolute;
+        z-index: 1;
+        top: 50px;
+        left: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 2em;
+    }
+
+    .general-container .hero{
+        flex-direction: column;
+    }
+
+    .general-container .hero .image{
+        margin-top: 7rem;
+        width: 60%;
+    }
+
+    .general-container .hero .description{
+        width: 100%;
+    }
+
+    .general-container .hero .fa-arrow-down{
+        display: none;
+    }
+
     .jornada .habilidades {
-        grid-template-rows: 480px 350px;
+        grid-template-rows: 420px 350px;
+    }
+
+    .projects  ul.slider li.item{
+        width: 300px;
+    }
+
+    .projects ul.slider li.item.active{
+        width: 79%;
     }
 }
 
 @media (max-width: 545px){
-    .general-container .hero .image img{
-        width: 300px;
+    .general-container .hero .image{
+        width: 90%;
     }
 
     .jornada .habilidades {
         grid-template-rows: 350px 350px;
+    }
+
+    .footer{
+        padding: 3rem;
+    }
+
+    .footer .contact{
+        padding: 1rem;
     }
 }

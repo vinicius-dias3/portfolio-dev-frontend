@@ -1,23 +1,19 @@
-@media (max-width: 1100px){
-    /* .header .nav .menu{
-        display: none;
+@media (max-width: 1025px){
+    /*AGORA, ESTÁ CONFIGURANDO COMO SERÁ EM TELAS DE ATÉ 1025PX  */
+    /* ESTE MONITOR, TEM 1366PX */
+
+    .footer .contact .email:hover,
+    .footer .contact .curriculo:hover{
+        clip-path: circle(10% at 8% 50%);
+        border: 1px solid transparent;
     }
 
-    .header .nav .btn-menu{
-        display: block;
-    } */
-
-    /* .general-container .hero{
-        display: block;
-        grid-template-rows: 300px 400px;
-    } */
-
-    /* .general-container .hero .image{
-        min-height: 350px;
-        display: flex;
-        align-items: center;
-    } */
-    
+    .footer .contact .email.active,
+    .footer .contact .curriculo.active{
+        clip-path: circle(100% at 60% 0%);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all .7s ease;
+    }
 }
 
 

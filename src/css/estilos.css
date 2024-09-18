@@ -47,12 +47,12 @@ html{
 .general-container .hero{
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
     padding: 0 50px;
     gap: 20px;
     align-items: center;
     position: relative;
     margin: 27px 0 20px;
-
 }
 
 .general-container .hero .image{
@@ -72,6 +72,10 @@ html{
     justify-content: center;
     align-items: center;
     width: 60%;
+}
+
+.hero .description .title{
+    align-self: flex-start;
 }
 
 .hero .description p{
@@ -269,23 +273,52 @@ html{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     width: 100%;
+    grid-gap: 1rem;
+    justify-content: center;
 }
 
 .projects  ul.slider li.item{
+    position: relative;  /*ultima alteração*/
     width: 350px;
     height: 380px;
-    filter: blur(1px) brightness(70%);
-    background: url(../images/placeholder.png) center no-repeat;
-    background-size: contain;
+    /* filter: blur(2px) brightness(60%); */
+    /* background: url(../images/placeholder.png) center no-repeat;
+    background-size: contain; */
     cursor: pointer;
     transition: all 1s ease;
     justify-self: center;
+    overflow: hidden;
+}
+
+.projects  ul.slider li.item::before{
+    content: ''; /*ultima alteração*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/placeholder.png) center no-repeat;
+    background-size: cover;
+    filter: none;
+    transition: filter 0.5s ease;
+    z-index: 1;
+}
+
+.projects  ul.slider li.item:nth-child(1)::before{
+    background: url(https://raw.githubusercontent.com/vinicius-dias3/to-do-list/main/src/images/demonstracao-projeto.png) center top no-repeat;
+}
+
+.projects  ul.slider li.item:nth-child(2)::before{
+    background: url(https://raw.githubusercontent.com/vinicius-dias3/tela-bloqueio-smartphone/main/src/images/projeto-pronto.png) center center no-repeat;
 }
 
 .projects ul.slider li.item.active{
-    filter: blur(0);
-    filter: brightness(100%);
+    /* filter: blur(1px) brightness(80%); */
     width: 100%;
+}
+
+.projects ul.slider li.item:hover::before{
+    filter: blur(2px) brightness(50%);
 }
 
 .projects .slider .item:hover{
@@ -294,12 +327,18 @@ html{
 
 .projects .slider .item .description-project{
     opacity: 0;
-    background-color: hsla(4, 72%, 43%, 0.3);
     width: 100%;
     height: 75%;
     padding: 15px;
     display: none;
     transition: all 2s ease;
+}
+
+.projects ul.slider li.item .description-project{
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 15px;
 }
 
 .projects .slider .item .description-project h3{
@@ -328,14 +367,14 @@ html{
 .item .description-project .links a{
     padding: 10px;
     border-radius: 20px;
-    color: #bd291fb3;
+    color: #313131;
     background-color: hsla(0, 0%, 100%, 0.502);
     display: inline-flex;
     justify-content: space-evenly;
-    align-items: center;
     width: 140px;
     margin-top: 10px;
     transition: transform .3s;
+    font-size: 1.7rem;
 }
 
 .item .description-project .links a:hover{
